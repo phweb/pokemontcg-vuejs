@@ -60,7 +60,7 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss" >
 $bg-yellow: #facc48;
 $link-blue: #3a5da8;
 

@@ -20,8 +20,8 @@
       <v-card-actions>
         <v-btn text>ID - {{ carta.id }}</v-btn>
 
-        <v-btn class="bg-yellow" outlined color="indigo">
-          Detalhes
+        <v-btn class="bg-yellow" outlined color="indigo" :to="`/details/${carta.id}`">
+          Saiba mais
         </v-btn>
 
         <v-spacer></v-spacer>
@@ -50,17 +50,10 @@ export default {
       .catch((error) => {
         console.log(error);
       });
-  },
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-$bg-yellow: #facc48;
-$link-blue: #3a5da8;
 
-$main-background: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
-
-.bg-blue {
-  background-image: $main-background;
-}
 </style>
