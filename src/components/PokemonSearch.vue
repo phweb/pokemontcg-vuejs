@@ -11,7 +11,7 @@
       </v-card>
       </v-row>
     </v-container>
-    <PokemonList :dados="pokemons" />
+    <PokemonList :dados="filterPokemons" />
   </div>
 </template>
 
@@ -38,47 +38,22 @@ export default {
   },
   mounted() {
     this.getPokemons();
+    this.filterPokemons = this.pokemons;
   },
   methods: {
     
     ...mapActions("pokemon", ["getPokemons"]),
          buscar() {
-      this.filterPokemons = this.$Storepokemons;
+      this.filterPokemons = this.pokemons;
       if (this.searchvalue == "" || this.searchvalue == " ") {
         this.filterPokemons = this.pokemons;
-      } else {
+      } else {   
         this.filterPokemons = this.pokemons.filter(
           (pokemon) => pokemon.name == this.searchvalue
         );
       }
     }
   }
-  // mounted() {
-  //   axios
-  //     .get("https://api.pokemontcg.io/v1/cards?page=1")
-  //     .then((resposta) => {
-  //       if (resposta.status === 200) this.pokemons = resposta.data.cards;
-  //       this.filterPokemons = resposta.data.cards;
-  //       this.pokemons.sort(function(a, b) {
-  //         return a.name > b.name ? 1 : b.name > a.name ? -1 : 0;
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // },
-  // methods: {
-  //   buscar() {
-  //     this.filterPokemons = this.pokemons;
-  //     if (this.searchvalue == "" || this.searchvalue == " ") {
-  //       this.filterPokemons = this.pokemons;
-  //     } else {
-  //       this.filterPokemons = this.pokemons.filter(
-  //         (pokemon) => pokemon.name == this.searchvalue
-  //       );
-  //     }
-  //   },
-  // },
 };
 </script>
 

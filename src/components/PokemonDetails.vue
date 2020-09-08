@@ -40,7 +40,7 @@
                 <span class="mt-1" v-for="item of attack.cost" :key="item.id">
                   <i :class="`energy ${item.toLowerCase().trim()}`"></i> </span
                 >
-                <modal :info="attack"/>
+                <modal :info="attack"/>l
                 
               </v-chip></span
             >
@@ -53,7 +53,8 @@
 
 <script>
 import modal from '@/components/modal.vue'
-import axios from "axios";
+import { mapState, mapActions } from "vuex";
+//import axios from "axios";
 export default {
   name: "PokemonDetails",
    components: {
@@ -65,21 +66,28 @@ export default {
   
   data() {
     return {
-     
-
       cards: [],
     };
+  }, computed: {
+    ...mapState("pokemon", ["pokemon"])
   },
-  created() {
-    axios
-      .get(`https://api.pokemontcg.io/v1/cards?id=${this.$route.params.id}`)
-      .then((resposta) => {
-        if (resposta.status === 200) this.cards = resposta.data.cards[0];
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  mounted() {
+    this.getDetails(this.$route.params.id);
+    this.cards = this.pokemon;
   },
+  methods: {
+    ...mapActions("pokemon", ["getDetails"]),
+  }
+  // created() {
+  //   axios
+  //     .get(`https://api.pokemontcg.io/v1/cards?id=${this.$route.params.id}`)
+  //     .then((resposta) => {
+  //       if (resposta.status === 200) this.cards = resposta.data.cards[0];
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // },
 };
 </script>
 

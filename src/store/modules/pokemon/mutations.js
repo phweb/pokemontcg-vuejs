@@ -5,6 +5,6 @@ export const SET_POKEMONS = (state, pokemons) => {
   state.pokemons = pokemons;
 }
 
-export const SET_POKEMON = (state, pokemon) => {
+export const SET_DETAILS = (state, pokemon) => {
   state.pokemon = pokemon;
 }

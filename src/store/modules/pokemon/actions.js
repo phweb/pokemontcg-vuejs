@@ -13,11 +13,11 @@ export const getPokemons = ({ commit }) => {
  
 }
 
-export const getPokemon = ({ commit }, productId) => {
+export const getDetails = ({ commit }, productId) => {
   axios
   .get(`https://api.pokemontcg.io/v1/cards?id=${productId}`)
   .then((response) => {
-    commit('SET_POKEMON', response.data.cards[0]);
+    commit('SET_DETAILS', response.data.cards[0]);
   })
   .catch((error) => {
     console.log(error);
