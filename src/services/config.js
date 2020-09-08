@@ -1,5 +1,8 @@
-import axios from 'axios'
 
-export const http = axios.create({
-  baseURL: 'https://api.pokemontcg.io/v1/cards',
+import axios from "axios";
+
+const Api = axios.create({
+    baseURL: 'https://api.pokemontcg.io/v1/'
 });
+
+export default Api;
