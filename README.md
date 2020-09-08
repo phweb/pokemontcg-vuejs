@@ -15,5 +15,8 @@ yarn serve
 yarn build
 ```
 
-
+### Rodar teste
+```
+yarn test:e2e
+```
 
